@@ -35,36 +35,38 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text.lower()
+
     if msg == 'hi':
-    	message = TemplateSendMessage(
-    		alt_text='Buttons template',
-    		template=ButtonsTemplate(
-        		thumbnail_image_url='https://i0.wp.com/www.womstation.com/wp-content/uploads/2018/11/%E9%9F%93%E5%9C%8B4.png?w=1280&ssl=1',
-        		title='Menu',
-        		text='Please select',
-        		actions=[
-            		PostbackTemplateAction(
-               			label='postback',
-                		text='postback text',
-                		data='action=buy&itemid=1'
-            		),
-            		MessageTemplateAction(
-                		label='message',
-                		text='message text'
-            		),
-            		URITemplateAction(
-                		label='uri',
-                		uri='http://example.com/'
-            		)
-        		]
-    		)
-		)
-		line_bot_api.reply_message(event.reply_token, message)
+        message = TemplateSendMessage(
+        alt_text='Buttons template',
+        template=ButtonsTemplate(
+        thumbnail_image_url='https://i0.wp.com/www.womstation.com/wp-content/uploads/2018/11/%E9%9F%93%E5%9C%8B4.png?w=1280&ssl=1',
+        title='第一個小功能',
+        text='網頁測試',
+        actions=[
+            URITemplateAction(
+                label='熱門youtube',
+                uri='https://www.youtube.com/feed/trending'
+            ),
+            URITemplateAction(
+                label='小新聞',
+                uri='https://news.google.com/?hl=zh-TW&tab=wn1&gl=TW&ceid=TW:zh-Hant'
+            ),
+            MessageTemplateAction(
+                label='天氣',
+                text='https://www.google.com/search?source=hp&ei=0Nw7XuHSAaK2mAXexKKACg&q=%E5%A4%A9%E6%B0%A3&oq=%E5%A4%A9%E6%B0%A3&gs_l=psy-ab.12..0i70i256j0i131j0j0i131l7.457.3402..9212...1.0..1.57.466.10......0....1..gws-wiz.....0.4ONE6RnC3uU&ved=0ahUKEwjh-tTwzrznAhUiG6YKHV6iCKAQ4dUDCAw'
+            )
+
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+
+    else:
+    	message = TextSendMessage(text='請輸入hi')
+    	line_bot_api.reply_message(event.reply_token, message)
 
 
-	else:
-		message = TextSendMessage(text='請輸入hi')
-		line_bot_api.reply_message(event.reply_token, message)
 
 
 if __name__ == "__main__":
