@@ -51,13 +51,9 @@ def handle_message(event):
             URITemplateAction(
                 label='小新聞',
                 uri='https://news.google.com/?hl=zh-TW&tab=wn1&gl=TW&ceid=TW:zh-Hant'
-            ),
-            URITemplateAction(
-                label='IGIG',
-                text='https://www.instagram.com/?hl=zh-tw'
             )
 
-                ]
+            ]
             )
         )
         line_bot_api.reply_message(event.reply_token, message)
