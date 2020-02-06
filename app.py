@@ -53,8 +53,8 @@ def handle_message(event):
                 uri='https://news.google.com/?hl=zh-TW&tab=wn1&gl=TW&ceid=TW:zh-Hant'
             ),
             URITemplateAction(
-                label='天氣',
-                text='https://www.google.com/search?source=hp&ei=0Nw7XuHSAaK2mAXexKKACg&q=%E5%A4%A9%E6%B0%A3&oq=%E5%A4%A9%E6%B0%A3&gs_l=psy-ab.12..0i70i256j0i131j0j0i131l7.457.3402..9212...1.0..1.57.466.10......0....1..gws-wiz.....0.4ONE6RnC3uU&ved=0ahUKEwjh-tTwzrznAhUiG6YKHV6iCKAQ4dUDCAw'
+                label='IGIG',
+                text='https://www.instagram.com/?hl=zh-tw'
             )
 
                 ]
