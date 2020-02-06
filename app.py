@@ -42,7 +42,7 @@ def handle_message(event):
         template=ButtonsTemplate(
         thumbnail_image_url='https://i0.wp.com/www.womstation.com/wp-content/uploads/2018/11/%E9%9F%93%E5%9C%8B4.png?w=1280&ssl=1',
         title='第一個小功能',
-        text='網頁測試',
+        text='測試測試',
         actions=[
             URITemplateAction(
                 label='熱門youtube',
