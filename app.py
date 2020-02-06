@@ -34,161 +34,38 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
-
-    if msg == '天氣':
-        message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-        thumbnail_image_url='https://s1.zerochan.net/Tsurumaki.Kokoro.600.2428613.jpg',
-        title='早起',
-        text='天氣',
-        actions=[
-            URITemplateAction(
-                label='新竹',
-                uri='https://www.google.com/search?ei=b70eXoaiL4fh-AaNlaKYAw&q=%E6%96%B0%E7%AB%B9%E5%A4%A9%E6%B0%A3&oq=%E6%96%B0%E7%AB%B9%E5%A4%A9%E6%B0%A3&gs_l=psy-ab.3..0i70i256j0i67j0i131j0i67l2j0l5.6189.7846..8034...0.1..1.73.658.14......0....1..gws-wiz.......0i71j0i131i67j0i131i67i70i256.YCtWlRDX34A&ved=0ahUKEwjGlcvwiIXnAhWHMN4KHY2KCDMQ4dUDCAs&uact=5'
-            ),
-            URITemplateAction(
-                label='台北',
-                uri='https://www.google.com/search?q=%E5%A4%A9%E6%B0%A3%E5%8F%B0%E5%8C%97%E5%85%AC%E9%A4%A8&oq=%E5%A4%A9%E6%B0%A3%E5%8F%B0%E5%8C%97%E5%85%AC%E9%A4%A8&aqs=chrome..69i57.5496j1j7&sourceid=chrome&ie=UTF-8'
-            ),
-            MessageTemplateAction(
-                label='選單',
-                text='back'
-            )
-
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
-
-    elif msg == '宅宅':
-        message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-        thumbnail_image_url='https://s1.zerochan.net/Tsurumaki.Kokoro.600.2390937.jpg',
-        title='宅活',
-        text='潛水',
-        actions=[
-            URITemplateAction(
-                            label='巴哈姆特',
-                            uri='https://www.gamer.com.tw/'
-                        ),
-            URITemplateAction(
-                            label='梗',
-                            uri='https://hornydragon.blogspot.com/'
-                        ),
-            MessageTemplateAction(
-                label='選單',
-                text='back'
-            )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
+    msg = event.message.text.lower()
+    if msg == 'hi':
+    	message = TemplateSendMessage(
+    		alt_text='Buttons template',
+    		template=ButtonsTemplate(
+        		thumbnail_image_url='https://i0.wp.com/www.womstation.com/wp-content/uploads/2018/11/%E9%9F%93%E5%9C%8B4.png?w=1280&ssl=1',
+        		title='Menu',
+        		text='Please select',
+        		actions=[
+            		PostbackTemplateAction(
+               			label='postback',
+                		text='postback text',
+                		data='action=buy&itemid=1'
+            		),
+            		MessageTemplateAction(
+                		label='message',
+                		text='message text'
+            		),
+            		URITemplateAction(
+                		label='uri',
+                		uri='http://example.com/'
+            		)
+        		]
+    		)
+		)
+		line_bot_api.reply_message(event.reply_token, message)
 
 
-    elif msg == 'yt':
-        message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-        thumbnail_image_url='https://i.imgur.com/qtOnsvM.jpg',
-        title='影片',
-        text='潛水',
-        actions=[
-            URITemplateAction(
-                            label='夯',
-                            uri='https://www.youtube.com/feed/trending'
-                        ),
-            URITemplateAction(
-                            label='nba',
-                            uri='https://www.youtube.com/results?search_query=nba'
-                        ),
-            URITemplateAction(
-                            label='onion',
-                            uri='https://www.youtube.com/channel/UCzxN4G3s9uR9ao5_O5DoXmA/videos'
-                        ),
-            MessageTemplateAction(
-                label='選單',
-                text='back'
-            )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
+	else:
+		message = TextSendMessage(text='請輸入hi')
+		line_bot_api.reply_message(event.reply_token, message)
 
-    elif msg == 'x':
-        message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-        thumbnail_image_url='https://i.imgur.com/qtOnsvM.jpg',
-        title='秘密影片',
-        text='潛水',
-        actions=[
-            URITemplateAction(
-                            label='nh',
-                            uri='https://nhentai.net'
-                        ),
-            URITemplateAction(
-                            label='po',
-                            uri='https://pornhub.com'
-                        ),
-            MessageTemplateAction(
-                label='選單',
-                text='back'
-            )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
-
-
-
-    else:
-        message = TemplateSendMessage(
-        alt_text='Carousel template',
-        template=CarouselTemplate(
-            columns=[
-                CarouselColumn(
-                    thumbnail_image_url='https://s1.zerochan.net/Tsurumaki.Kokoro.600.2390937.jpg',
-                    title='日常宅活',
-                    text='懶人包',
-                    actions=[
-                        MessageTemplateAction(
-                            label='點我',
-                            text='宅宅'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='https://i.imgur.com/qtOnsvM.jpg',
-                    title='youtube',
-                    text='熱門',
-                    actions=[
-                        MessageTemplateAction(
-                            label='點我',
-                            text='yt'
-                        )
-                    ]
-                ),
-                CarouselColumn(
-                    thumbnail_image_url='https://s1.zerochan.net/Tsurumaki.Kokoro.600.2428613.jpg',
-                    title='早起',
-                    text='天氣',
-                    actions=[
-                        MessageTemplateAction(
-                            label='點我',
-                            text='天氣'
-                        )
-                    ]
-                )
-            ]
-        )
-    )
-        line_bot_api.reply_message(event.reply_token, message)
-
-    
-        
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
