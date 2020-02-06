@@ -51,7 +51,11 @@ def handle_message(event):
             URITemplateAction(
                 label='小新聞',
                 uri='https://news.google.com/?hl=zh-TW&tab=wn1&gl=TW&ceid=TW:zh-Hant'
-            )
+            ),
+            URITemplateAction(
+                label='IGIG',
+                uri='https://www.instagram.com/?hl=zh-tw'
+            ),
 
             ]
             )
